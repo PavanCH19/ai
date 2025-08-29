@@ -1,0 +1,7 @@
+test_score,skill_match_ratio,relevant_experience,project_match,preferred_domain,skills_text,projects_text,titles_text,label
+88,0.4,5,0,product management,roadmap communication teamwork stakeholder management,problem solving project,product owner product manager project manager,
+48,0.6,9,0,networking,tcp/ip routing cisco,critical thinking project problem solving project,network engineer system administrator it support specialist,
+75,0.4,0,1,robotics,robotics ros,control project,,
+52,0.2,2,1,game development,blender,character project communication project,game developer,
+91,0.4,0,1,data science,pandas communication sql,model project,,
+81,0.6,4,1,mobile app development,teamwork android kotlin problem solving react native,ios project,mobile app engineer android developer android developer,
