@@ -1,0 +1,128 @@
+[
+    {
+        "skills": [
+            "product roadmap",
+            "stakeholder management",
+            "agile methodology",
+            "presentation skills",
+            "business strategy"
+        ],
+        "projects": [
+            "roadmap planning project",
+            "stakeholder alignment project"
+        ],
+        "work_experience": [
+            {
+                "title": "Product Coordinator",
+                "years": 1
+            }
+        ],
+        "test_score": 82,
+        "preferred_domain": "Product Management"
+    },
+    {
+        "skills": [
+            "python",
+            "sql",
+            "statistics",
+            "data visualization",
+            "machine learning",
+            "critical thinking"
+        ],
+        "projects": [
+            "classification model project",
+            "data dashboard project"
+        ],
+        "work_experience": [
+            {
+                "title": "Data Analyst",
+                "years": 2
+            }
+        ],
+        "test_score": 80,
+        "preferred_domain": "Data Science"
+    },
+    {
+        "skills": [
+            "html",
+            "css",
+            "javascript",
+            "vue.js",
+            "responsive design",
+            "debugging"
+        ],
+        "projects": [
+            "portfolio website",
+            "ui improvement project"
+        ],
+        "work_experience": [
+            {
+                "title": "Frontend Engineer",
+                "years": 1
+            }
+        ],
+        "test_score": 87,
+        "preferred_domain": "Web Development"
+    },
+    {
+        "skills": [
+            "seo",
+            "email marketing",
+            "content writing",
+            "analytics",
+            "copywriting",
+            "campaign management"
+        ],
+        "projects": [
+            "product launch campaign"
+        ],
+        "work_experience": [
+            {
+                "title": "Marketing Intern",
+                "years": 0.5
+            }
+        ],
+        "test_score": 58,
+        "preferred_domain": "Digital Marketing"
+    },
+    {
+        "skills": [
+            "c programming",
+            "electronics",
+            "embedded systems",
+            "robotics design",
+            "sensor integration"
+        ],
+        "projects": [
+            "robot arm project"
+        ],
+        "work_experience": [
+            {
+                "title": "Robotics Intern",
+                "years": 1
+            }
+        ],
+        "test_score": 62,
+        "preferred_domain": "Robotics"
+    },
+    {
+        "skills": [
+            "ms word",
+            "documentation",
+            "technical editing",
+            "proofreading",
+            "manual writing"
+        ],
+        "projects": [
+            "api documentation project"
+        ],
+        "work_experience": [
+            {
+                "title": "Technical Writer",
+                "years": 1
+            }
+        ],
+        "test_score": 65,
+        "preferred_domain": "Technical Writing"
+    }
+]

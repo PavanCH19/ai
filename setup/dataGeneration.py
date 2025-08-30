@@ -1,176 +1,224 @@
 # import random
 # import json
+# import time
+# from collections import defaultdict
 
-# # Load domain requirements from external file
-# with open("domain_requirements.json", "r", encoding="utf-8") as f:
-#     DOMAIN_REQUIREMENTS = json.load(f)
+# def generate_dataset(domain_path, output_path, total_samples):
+#     start_time = time.time()
+#     print("⏳ Starting dataset generation...")
 
-# domains = list(DOMAIN_REQUIREMENTS.keys())
+#     # Load domain requirements
+#     with open(domain_path, "r", encoding="utf-8") as f:
+#         DOMAIN_REQUIREMENTS = json.load(f)
+#     domains = list(DOMAIN_REQUIREMENTS.keys())
 
-# # -------- Generate a candidate profile (without label) --------
-# def generate_candidate_profile(domain):
-#     requirements = DOMAIN_REQUIREMENTS[domain]
+#     # Track label counts
+#     label_counts = defaultdict(int)
+#     domain_label_counts = {d: defaultdict(int) for d in domains}
 
-#     # --- Work experience logic ---
-#     work_experience = []
-#     # 30% chance the candidate is a fresher
-#     if random.random() > 0.3:
-#         num_jobs = random.randint(1, 3)
-#         for _ in range(num_jobs):
-#             job_title = random.choice(requirements.get("job_titles", ["Professional"]))
-#             years = random.randint(1, 3)
-#             work_experience.append({"title": job_title, "years": years})
+#     # --- Generate a candidate profile ---
+#     def generate_candidate_profile(domain):
+#         req = DOMAIN_REQUIREMENTS[domain]
 
-#     profile = {
-#         "skills": random.sample(requirements["skills"], k=random.randint(1, 3)),
-#         "projects": [f"{random.choice(requirements['project_keywords'])} project"],
-#         "work_experience": work_experience,  # can be [] if fresher
-#         "test_score": random.randint(40, 95),
-#         "preferred_domain": domain
-#     }
-#     return profile
+#         # Work experience
+#         work_exp = []
+#         if random.random() > 0.3:  # 30% chance to be fresher
+#             for _ in range(random.randint(1, 3)):
+#                 work_exp.append({
+#                     "title": random.choice(req.get("job_titles", ["Professional"])),
+#                     "years": random.randint(1, 3)
+#                 })
 
-# # -------- Evaluate candidate profile to assign label --------
-# def evaluate_candidate(candidate):
-#     domain = candidate["preferred_domain"]
-#     requirements = DOMAIN_REQUIREMENTS[domain]
+#         # In generate_candidate_profile
+#         skills = random.sample(req["skills"], k=random.randint(max(2, len(req["skills"])//2), len(req["skills"])))
 
-#     skills = set(candidate.get("skills", []))
-#     projects = " ".join(candidate.get("projects", [])).lower()
-#     work_exp = candidate.get("work_experience", [])
-#     years = sum(job.get("years", 0) for job in work_exp)
-#     test_score = candidate["test_score"]
+#         other_skills = ["communication", "teamwork", "problem solving", "critical thinking"]
+#         skills += random.sample(other_skills, k=random.randint(0, 2))
 
-#     matched_skills = skills.intersection(requirements["skills"])
-#     project_match = any(kw in projects for kw in requirements["project_keywords"])
+#         projects = []
+#         for _ in range(random.randint(1, 2)):
+#             if random.random() > 0.3:  # 70% chance to match domain
+#                 projects.append(f"{random.choice(req['project_keywords'])} project")
+#             else:
+#                 projects.append(f"{random.choice(other_skills)} project")
 
-#     # ✅ Labeling logic
-#     if len(matched_skills) >= 2 and (project_match or years >= 1) and test_score >= requirements["min_score"]:
-#         return "fit"
-#     elif len(matched_skills) >= 2 and (project_match or years >= 1):
-#         return "partial"
-#     else:
-#         # Check if skills match another domain better → suggest
-#         for alt_domain, req in DOMAIN_REQUIREMENTS.items():
-#             if alt_domain == domain:
-#                 continue
-#             if skills.intersection(req["skills"]) and test_score >= req["min_score"]:
-#                 return "suggest"
-#         return "no_fit"
+#         return {
+#             "skills": skills,
+#             "projects": projects,
+#             "work_experience": work_exp,
+#             "test_score": random.randint(req["min_score"] - 5, 95),
+#             "preferred_domain": domain
+#         }
 
-# # -------- Generate dataset --------
-# total_samples = 2000  # change to 5000, 10000, etc.
-# dataset = []
+#     # --- Evaluate candidate profile ---
+#     def evaluate_candidate(candidate):
+#         domain = candidate["preferred_domain"]
+#         req = DOMAIN_REQUIREMENTS[domain]
 
-# for _ in range(total_samples):
-#     domain = random.choice(domains)
-#     profile = generate_candidate_profile(domain)
-#     profile["label"] = evaluate_candidate(profile)  # ✅ Auto labeling
-#     dataset.append(profile)
+#         skills = set(candidate["skills"])
+#         projects_text = " ".join(candidate["projects"]).lower()
+#         work_exp = candidate["work_experience"]
+#         total_years = sum(job["years"] for job in work_exp)
+#         relevant_exp = sum(job["years"] for job in work_exp if job["title"] in req.get("job_titles", []))
+#         test_score = candidate["test_score"]
 
-# # -------- Save dataset --------
-# output_path = "candidates_dataset.json"
-# with open(output_path, "w", encoding="utf-8") as f:
-#     json.dump(dataset, f, indent=2)
+#         matched_skills = skills.intersection(req["skills"])
+#         skill_ratio = len(matched_skills) / len(req["skills"])
+#         project_match = any(kw in projects_text for kw in req["project_keywords"])
 
-# print(f"✅ Dataset saved to {output_path} with {len(dataset)} samples.")
+#         # Label rules
+#         if skill_ratio >= 0.5 and (project_match or relevant_exp >= 1) and test_score >= req["min_score"]:
+#             return "fit"
+#         elif skill_ratio >= 0.4 and (project_match or relevant_exp >= 0.5) and test_score >= (req["min_score"] - 10 ):
+#             return "partial"
+#         else:
+#             # Suggest for other domains
+#             for alt_domain, alt_req in DOMAIN_REQUIREMENTS.items():
+#                 if alt_domain == domain:
+#                     continue
+#                 if skills.intersection(alt_req["skills"]) and test_score >= alt_req["min_score"]:
+#                     return "suggest"
+#             return "no_fit"
 
+#     # --- Generate dataset ---
+#     dataset = []
+#     for i in range(total_samples):
+#         domain = random.choice(domains)
+#         candidate = generate_candidate_profile(domain)
+#         candidate["label"] = evaluate_candidate(candidate)
+#         dataset.append(candidate)
+
+#         label_counts[candidate["label"]] += 1
+#         domain_label_counts[domain][candidate["label"]] += 1
+
+#         # Minimal progress log
+#         if (i + 1) % max(1, total_samples // 10) == 0:
+#             print(f"🔹 {i + 1}/{total_samples} samples generated")
+
+#     # Save dataset
+#     with open(output_path, "w", encoding="utf-8") as f:
+#         json.dump(dataset, f, indent=2)
+
+#     # Summary
+#     print("\n📊 Label counts:", dict(label_counts))
+#     print("📊 Domain-wise label counts:")
+#     for domain, counts in domain_label_counts.items():
+#         print(f"{domain}: {dict(counts)}")
+
+#     print(f"\n✅ Dataset generation finished in {time.time() - start_time:.2f} seconds.")
+#     return dataset, label_counts, domain_label_counts
 
 
 import random
 import json
+import time
+from collections import defaultdict
 
-def generate_dataset(domain_path, output_path, total_samples):
+def generate_dataset(domain_path, output_path, total_samples, seed=42):
+    random.seed(seed)
+    start_time = time.time()
+    print("⏳ Starting dataset generation...")
+
     # Load domain requirements
     with open(domain_path, "r", encoding="utf-8") as f:
         DOMAIN_REQUIREMENTS = json.load(f)
-
     domains = list(DOMAIN_REQUIREMENTS.keys())
 
-    # -------- Generate a candidate profile (without label) --------
+    # Track label counts
+    label_counts = defaultdict(int)
+    domain_label_counts = {d: defaultdict(int) for d in domains}
+
+    # --- Generate a candidate profile ---
     def generate_candidate_profile(domain):
-        requirements = DOMAIN_REQUIREMENTS[domain]
+        req = DOMAIN_REQUIREMENTS[domain]
 
-        # --- Work experience logic ---
-        work_experience = []
-        if random.random() > 0.3:  # 30% chance fresher
-            num_jobs = random.randint(1, 3)
-            for _ in range(num_jobs):
-                job_title = random.choice(requirements.get("job_titles", ["Professional"]))
-                years = random.randint(1, 3)
-                work_experience.append({"title": job_title, "years": years})
+        # Work experience
+        work_exp = []
+        if random.random() > 0.3:  # 30% chance to be fresher
+            for _ in range(random.randint(1, 3)):
+                work_exp.append({
+                    "title": random.choice(req.get("job_titles", ["Professional"])),
+                    "years": random.randint(1, 3)
+                })
 
-        # --- Skills logic ---
-        skills = random.sample(requirements["skills"], k=random.randint(1, min(3, len(requirements["skills"]))))
+        # Skills
+        skills = random.sample(req["skills"], k=random.randint(max(2, len(req["skills"])//2), len(req["skills"])))
         other_skills = ["communication", "teamwork", "problem solving", "critical thinking"]
-        # Add some irrelevant skills
         skills += random.sample(other_skills, k=random.randint(0, 2))
 
-        # --- Projects logic ---
-        num_projects = random.randint(1, 2)
+        # Projects
         projects = []
-        for _ in range(num_projects):
-            # 50% chance project is relevant
-            if random.random() > 0.5:
-                projects.append(f"{random.choice(requirements['project_keywords'])} project")
+        for _ in range(random.randint(1, 2)):
+            if random.random() > 0.3:
+                projects.append(f"{random.choice(req['project_keywords'])} project")
             else:
                 projects.append(f"{random.choice(other_skills)} project")
 
-        profile = {
+        # Test score
+        test_score = random.randint(req["min_score"], 95)
+
+        return {
             "skills": skills,
             "projects": projects,
-            "work_experience": work_experience,
-            "test_score": random.randint(40, 95),
+            "work_experience": work_exp,
+            "test_score": test_score,
             "preferred_domain": domain
         }
-        return profile
 
-    # -------- Evaluate candidate profile to assign label --------
+    # --- Evaluate candidate profile ---
     def evaluate_candidate(candidate):
         domain = candidate["preferred_domain"]
-        requirements = DOMAIN_REQUIREMENTS[domain]
+        req = DOMAIN_REQUIREMENTS[domain]
 
-        skills = set(candidate.get("skills", []))
-        projects = " ".join(candidate.get("projects", [])).lower()
-        work_exp = candidate.get("work_experience", [])
-        years = sum(job.get("years", 0) for job in work_exp)
+        skills = set(candidate["skills"])
+        projects_text = " ".join(candidate["projects"]).lower()
+        work_exp = candidate["work_experience"]
+        total_years = sum(job["years"] for job in work_exp)
+        relevant_exp = sum(job["years"] for job in work_exp if job["title"] in req.get("job_titles", []))
         test_score = candidate["test_score"]
 
-        # --- Feature evaluation ---
-        matched_skills = skills.intersection(requirements["skills"])
-        skill_match_ratio = len(matched_skills) / len(requirements["skills"])  # percentage of relevant skills
-        project_match = any(kw in projects for kw in requirements["project_keywords"])
-        experience_relevant = sum(job.get("years", 0) for job in work_exp 
-                                  if job.get("title") in requirements.get("job_titles", []))
+        matched_skills = skills.intersection(req["skills"])
+        skill_ratio = len(matched_skills) / max(1, len(req["skills"]))
+        project_match = any(kw in projects_text for kw in req["project_keywords"])
 
-        # ✅ Labeling logic
-        if skill_match_ratio >= 0.5 and (project_match or experience_relevant >= 1) and test_score >= requirements["min_score"]:
+        # --- Threshold-based label assignment ---
+        if test_score >= 80 and skill_ratio > 0.35 and relevant_exp > 1:
             return "fit"
-        elif skill_match_ratio >= 0.5 and (project_match or experience_relevant >= 1):
+        elif test_score >= 70 and skill_ratio > 0.25 and relevant_exp >= 1:
             return "partial"
         else:
-            # Check if candidate fits another domain better → suggest
-            for alt_domain, req in DOMAIN_REQUIREMENTS.items():
+            # Check if candidate fits another domain
+            for alt_domain, alt_req in DOMAIN_REQUIREMENTS.items():
                 if alt_domain == domain:
                     continue
-                if skills.intersection(req["skills"]) and test_score >= req["min_score"]:
+                if skills.intersection(alt_req["skills"]) and test_score >= alt_req["min_score"]:
                     return "suggest"
             return "no_fit"
 
-    # -------- Generate dataset --------
+    # --- Generate dataset ---
     dataset = []
-    for _ in range(total_samples):
+    for i in range(total_samples):
         domain = random.choice(domains)
-        profile = generate_candidate_profile(domain)
-        profile["label"] = evaluate_candidate(profile)
-        dataset.append(profile)
+        candidate = generate_candidate_profile(domain)
+        candidate["label"] = evaluate_candidate(candidate)
+        dataset.append(candidate)
 
-    # -------- Save dataset --------
+        label_counts[candidate["label"]] += 1
+        domain_label_counts[domain][candidate["label"]] += 1
+
+        # Progress log
+        if (i + 1) % max(1, total_samples // 10) == 0:
+            print(f"🔹 {i + 1}/{total_samples} samples generated")
+
+    # Save dataset
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(dataset, f, indent=2)
 
-    print(f"✅ Dataset saved to {output_path} with {len(dataset)} samples.")
+    # Summary
+    print("\n📊 Label counts:", dict(label_counts))
+    print("📊 Domain-wise label counts:")
+    for domain, counts in domain_label_counts.items():
+        print(f"{domain}: {dict(counts)}")
 
-
-
-
+    print(f"\n✅ Dataset generation finished in {time.time() - start_time:.2f} seconds.")
+    return dataset, label_counts, domain_label_counts

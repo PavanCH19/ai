@@ -1,57 +1,24 @@
-# import pandas as pd
-# import json
-
-# # Load your dataset JSON
-# with open("candidates_dataset.json", "r", encoding="utf-8") as f:
-#     data = json.load(f)
-
-# # Helper: flatten JSON fields into usable features
-# def json_to_row(sample):
-#     skills = sample.get("skills", [])
-#     projects = sample.get("projects", [])
-#     work_exp = sample.get("work_experience", [])
-
-#     total_years = sum(job.get("years", 0) for job in work_exp)
-#     titles = [job.get("title", "") for job in work_exp]
-
-#     return {
-#         "test_score": sample.get("test_score", None),
-#         "total_years": total_years,
-#         "n_skills": len(skills),
-#         "n_projects": len(projects),
-#         "preferred_domain": sample.get("preferred_domain", "").lower(),
-#         "skills_text": " ".join(skills).lower(),
-#         "projects_text": " ".join(projects).lower(),
-#         "titles_text": " ".join(titles).lower(),
-#         "label": sample.get("label", "").lower()
-#     }
-
-# # Build dataframe
-# rows = [json_to_row(x) for x in data]
-# df = pd.DataFrame(rows)
-
-# # Save both CSV and Parquet
-# output_csv = "candidates_dataset.csv"
-# output_parquet = "candidates_dataset.parquet"
-
-# df.to_csv(output_csv, index=False)
-# df.to_parquet(output_parquet, index=False)
-
-# print(f"✅ Dataset saved as {output_csv} and {output_parquet}")
-
-
-
 import pandas as pd
 import json
+import time  # For timing measurements
 
 def update_dataset(dataset_path, domain_path, output_csv, output_parquet):
+    start_time = time.time()
+    print("⏳ Starting dataset update...")
+
     # Load your dataset JSON
+    t0 = time.time()
     with open(dataset_path, "r", encoding="utf-8") as f:
         data = json.load(f)
+    t1 = time.time()
+    print(f"📂 Loaded dataset JSON ({len(data)} samples) in {t1 - t0:.4f} seconds.")
 
     # Load domain requirements for feature relevance
+    t2 = time.time()
     with open(domain_path, "r", encoding="utf-8") as f:
         DOMAIN_REQUIREMENTS = json.load(f)
+    t3 = time.time()
+    print(f"📂 Loaded domain requirements in {t3 - t2:.4f} seconds.")
 
     # Helper: convert JSON sample to ML-ready features
     def json_to_row(sample):
@@ -87,11 +54,22 @@ def update_dataset(dataset_path, domain_path, output_csv, output_parquet):
         }
 
     # Build dataframe
-    rows = [json_to_row(x) for x in data]
+    t_build_start = time.time()
+    rows = []
+    for i, x in enumerate(data):
+        rows.append(json_to_row(x))
+        if (i + 1) % max(1, len(data)//10) == 0:
+            print(f"🔹 Processed {i + 1}/{len(data)} samples...")
     df = pd.DataFrame(rows)
+    t_build_end = time.time()
+    print(f"⏱ Dataframe built in {t_build_end - t_build_start:.2f} seconds.")
 
     # Save both CSV and Parquet
+    t_save_start = time.time()
     df.to_csv(output_csv, index=False)
     df.to_parquet(output_parquet, index=False)
+    t_save_end = time.time()
+    print(f"💾 Dataset saved as CSV and Parquet in {t_save_end - t_save_start:.4f} seconds.")
 
-    print(f"✅ Updated dataset saved as {output_csv} and {output_parquet}")
+    end_time = time.time()
+    print(f"✅ Total process finished in {end_time - start_time:.2f} seconds.")
