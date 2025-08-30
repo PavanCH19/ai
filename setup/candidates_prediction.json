@@ -1,128 +1,128 @@
 [
     {
         "skills": [
-            "product roadmap",
-            "stakeholder management",
-            "agile methodology",
-            "presentation skills",
-            "business strategy"
+            "java",
+            "spring boot",
+            "microservices",
+            "rest api",
+            "unit testing"
         ],
         "projects": [
-            "roadmap planning project",
-            "stakeholder alignment project"
+            "e-commerce backend",
+            "inventory management system"
         ],
         "work_experience": [
             {
-                "title": "Product Coordinator",
-                "years": 1
-            }
-        ],
-        "test_score": 82,
-        "preferred_domain": "Product Management"
-    },
-    {
-        "skills": [
-            "python",
-            "sql",
-            "statistics",
-            "data visualization",
-            "machine learning",
-            "critical thinking"
-        ],
-        "projects": [
-            "classification model project",
-            "data dashboard project"
-        ],
-        "work_experience": [
-            {
-                "title": "Data Analyst",
+                "title": "Backend Developer",
                 "years": 2
             }
         ],
-        "test_score": 80,
+        "test_score": 78,
+        "preferred_domain": "Software Development"
+    },
+    {
+        "skills": [
+            "photoshop",
+            "illustrator",
+            "figma",
+            "ui/ux design",
+            "wireframing"
+        ],
+        "projects": [
+            "mobile app redesign",
+            "website UI overhaul"
+        ],
+        "work_experience": [
+            {
+                "title": "UI Designer",
+                "years": 1
+            }
+        ],
+        "test_score": 85,
+        "preferred_domain": "Design"
+    },
+    {
+        "skills": [
+            "r",
+            "sql",
+            "data cleaning",
+            "statistical modeling",
+            "visualization"
+        ],
+        "projects": [
+            "sales prediction model",
+            "customer churn analysis"
+        ],
+        "work_experience": [
+            {
+                "title": "Data Scientist",
+                "years": 3
+            }
+        ],
+        "test_score": 90,
         "preferred_domain": "Data Science"
     },
     {
         "skills": [
-            "html",
-            "css",
-            "javascript",
-            "vue.js",
-            "responsive design",
-            "debugging"
-        ],
-        "projects": [
-            "portfolio website",
-            "ui improvement project"
-        ],
-        "work_experience": [
-            {
-                "title": "Frontend Engineer",
-                "years": 1
-            }
-        ],
-        "test_score": 87,
-        "preferred_domain": "Web Development"
-    },
-    {
-        "skills": [
-            "seo",
-            "email marketing",
-            "content writing",
-            "analytics",
-            "copywriting",
-            "campaign management"
-        ],
-        "projects": [
-            "product launch campaign"
-        ],
-        "work_experience": [
-            {
-                "title": "Marketing Intern",
-                "years": 0.5
-            }
-        ],
-        "test_score": 58,
-        "preferred_domain": "Digital Marketing"
-    },
-    {
-        "skills": [
-            "c programming",
-            "electronics",
+            "c++",
             "embedded systems",
-            "robotics design",
-            "sensor integration"
+            "rtos",
+            "hardware debugging",
+            "iot"
         ],
         "projects": [
-            "robot arm project"
+            "smart home controller",
+            "sensor network project"
         ],
         "work_experience": [
             {
-                "title": "Robotics Intern",
-                "years": 1
+                "title": "Embedded Engineer",
+                "years": 2
             }
         ],
-        "test_score": 62,
+        "test_score": 70,
         "preferred_domain": "Robotics"
     },
     {
         "skills": [
-            "ms word",
-            "documentation",
-            "technical editing",
-            "proofreading",
-            "manual writing"
+            "content strategy",
+            "seo",
+            "blog writing",
+            "analytics",
+            "social media"
         ],
         "projects": [
-            "api documentation project"
+            "product launch campaign",
+            "content marketing plan"
         ],
         "work_experience": [
             {
-                "title": "Technical Writer",
+                "title": "Content Writer",
                 "years": 1
             }
         ],
-        "test_score": 65,
-        "preferred_domain": "Technical Writing"
+        "test_score": 60,
+        "preferred_domain": "Digital Marketing"
+    },
+    {
+        "skills": [
+            "python",
+            "flask",
+            "api development",
+            "docker",
+            "testing"
+        ],
+        "projects": [
+            "microservice api project",
+            "internal tool development"
+        ],
+        "work_experience": [
+            {
+                "title": "Software Engineer",
+                "years": 1
+            }
+        ],
+        "test_score": 82,
+        "preferred_domain": "Software Development"
     }
 ]

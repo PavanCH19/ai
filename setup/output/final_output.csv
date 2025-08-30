@@ -1,7 +1,7 @@
 test_score,skill_match_ratio,relevant_experience,project_match,preferred_domain,skills_text,projects_text,titles_text,label,predicted_label
-82,0.125,0,1,product management,product roadmap stakeholder management agile methodology presentation skills business strategy,roadmap planning project stakeholder alignment project,product coordinator,,suggest
-80,0.3846153846153846,2,1,data science,statistics sql critical thinking data visualization python machine learning,classification model project data dashboard project,data analyst,,fit
-87,0.2142857142857142,1,1,web development,vue.js html javascript responsive design css debugging,portfolio website ui improvement project,frontend engineer,,partial
-58,0.3,0,1,digital marketing,campaign management content writing email marketing copywriting seo analytics,product launch campaign,marketing intern,,no_fit
-62,0.1,0,1,robotics,electronics c programming robotics design sensor integration embedded systems,robot arm project,robotics intern,,no_fit
-65,0.1111111111111111,1,1,technical writing,technical editing manual writing proofreading documentation ms word,api documentation project,technical writer,,suggest
+78,0.0,0,0,software development,microservices spring boot unit testing java rest api,e-commerce backend inventory management system,backend developer,,suggest
+85,0.0,0,0,design,ui/ux design photoshop wireframing figma illustrator,mobile app redesign website ui overhaul,ui designer,,suggest
+90,0.1538461538461538,3,1,data science,sql data cleaning visualization statistical modeling r,sales prediction model customer churn analysis,data scientist,,fit
+70,0.2,0,1,robotics,hardware debugging embedded systems c++ iot rtos,smart home controller sensor network project,embedded engineer,,no_fit
+60,0.3,0,1,digital marketing,blog writing analytics seo content strategy social media,product launch campaign content marketing plan,content writer,,no_fit
+82,0.0,0,0,software development,python docker flask testing api development,microservice api project internal tool development,software engineer,,suggest

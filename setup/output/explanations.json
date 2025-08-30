@@ -1,0 +1,71 @@
+[
+    {
+        "preferred_domain": "Software Development",
+        "predicted_label": "suggest",
+        "strengths": [],
+        "weaknesses": [
+            "Domain rules not found."
+        ],
+        "reason": "No evaluation possible for this domain."
+    },
+    {
+        "preferred_domain": "Design",
+        "predicted_label": "suggest",
+        "strengths": [],
+        "weaknesses": [
+            "Domain rules not found."
+        ],
+        "reason": "No evaluation possible for this domain."
+    },
+    {
+        "preferred_domain": "Data Science",
+        "predicted_label": "fit",
+        "strengths": [
+            "Test score 90 meets/exceeds minimum 70",
+            "Skills matched: sql, r",
+            "Relevant projects: sales prediction model, customer churn analysis",
+            "Relevant experience: Data Scientist"
+        ],
+        "weaknesses": [
+            "Skills missing: python, data visualization, statistics, pandas, numpy..."
+        ],
+        "reason": "You are evaluated as a strong fit for Data Science. You demonstrated knowledge through your test score of 90. You have relevant skills (r, sql, data cleaning, statistical modeling, visualization) that align well with this domain. Your experience as Data Scientist adds practical value. You worked on projects like sales prediction model, customer churn analysis, which are directly relevant. Your skills are not fully aligned. You require python, data visualization, statistics, pandas, numpy, feature engineering, scikit-learn, deep learning, machine learning, matplotlib, etl to improve your suitability."
+    },
+    {
+        "preferred_domain": "Robotics",
+        "predicted_label": "no_fit",
+        "strengths": [
+            "Test score 70 meets/exceeds minimum 70",
+            "Skills matched: c++, embedded systems",
+            "Relevant projects: smart home controller"
+        ],
+        "weaknesses": [
+            "Skills missing: ros, mechanical design, robotics, arduino, automation...",
+            "No relevant domain experience"
+        ],
+        "reason": "You are evaluated as a low fit for Robotics. You demonstrated knowledge through your test score of 70. You have relevant skills (c++, embedded systems, rtos, hardware debugging, iot) that align well with this domain. You worked on projects like smart home controller, sensor network project, which are directly relevant. Your skills are not fully aligned. You require ros, mechanical design, robotics, arduino, automation, robot programming, sensors, control systems to improve your suitability. You have limited or no professional experience, which is important for practical application."
+    },
+    {
+        "preferred_domain": "Digital Marketing",
+        "predicted_label": "no_fit",
+        "strengths": [
+            "Test score 60 meets/exceeds minimum 55",
+            "Skills matched: seo, analytics, social media",
+            "Relevant projects: product launch campaign, content marketing plan"
+        ],
+        "weaknesses": [
+            "Skills missing: sem, marketing strategy, ppc, content marketing, email marketing...",
+            "No relevant domain experience"
+        ],
+        "reason": "You are evaluated as a low fit for Digital Marketing. You demonstrated knowledge through your test score of 60. You have relevant skills (content strategy, seo, blog writing, analytics, social media) that align well with this domain. You worked on projects like product launch campaign, content marketing plan, which are directly relevant. Your skills are not fully aligned. You require sem, marketing strategy, ppc, content marketing, email marketing, ads, google analytics to improve your suitability. You have limited or no professional experience, which is important for practical application."
+    },
+    {
+        "preferred_domain": "Software Development",
+        "predicted_label": "suggest",
+        "strengths": [],
+        "weaknesses": [
+            "Domain rules not found."
+        ],
+        "reason": "No evaluation possible for this domain."
+    }
+]

@@ -1,88 +1,32 @@
-from dfGeneration import update_dataset
 from pathlib import Path
-import time  # For timing measurements
+import time
+from dfGeneration import update_dataset
+import pandas as pd
+from catboost import CatBoostClassifier, Pool
 
-def predict_candidates(model_path, input_csv, output_csv="predictions.csv"):
-    import pandas as pd
-    from catboost import CatBoostClassifier, Pool
+def update_and_predict(dataset_path, domain_path, model_path, output_dir):
+    """
+    Updates the dataset and runs predictions.
+    
+    Args:
+        dataset_path (str or Path): Path to candidates JSON.
+        domain_path (str or Path): Path to domain requirements JSON.
+        model_path (str or Path): Path to CatBoost model.
+        output_dir (str or Path): Directory to save outputs.
+        
+    Returns:
+        pd.DataFrame: DataFrame with predictions.
+    """
+    output_dir = Path(output_dir)
+    output_dir.mkdir(exist_ok=True)
 
-    start_time = time.time()
-    print("⏳ Starting prediction process...")
+    output_csv = output_dir / "candidates_pred.csv"
+    output_parquet = output_dir / "candidates_pred.parquet"
+    final_output_csv = output_dir / "final_output.csv"
 
-    # Load new data
-    t0 = time.time()
-    df = pd.read_csv(input_csv)
-    t1 = time.time()
-    print(f"📂 Loaded input CSV ({len(df)} samples) in {t1 - t0:.4f} seconds.")
-
-    # Feature groups
-    num_cols  = ["test_score", "skill_match_ratio", "relevant_experience", "project_match"]
-    cat_cols  = ["preferred_domain"]
-    text_cols = ["skills_text", "projects_text", "titles_text"]
-    feature_cols = num_cols + cat_cols + text_cols
-
-    X = df[feature_cols].copy()  # <-- copy to avoid SettingWithCopyWarning
-
-    # Clean features
-    t_clean_start = time.time()
-    for col in text_cols:
-        X[col] = X[col].fillna("").astype(str)
-    for col in cat_cols:
-        X[col] = X[col].fillna("unknown").astype(str)
-    t_clean_end = time.time()
-    print(f"🧹 Features cleaned in {t_clean_end - t_clean_start:.4f} seconds.")
-
-    # Build Pool
-    cat_idx  = [feature_cols.index(c) for c in cat_cols]
-    text_idx = [feature_cols.index(c) for c in text_cols]
-    t_pool_start = time.time()
-    pool = Pool(X, cat_features=cat_idx, text_features=text_idx)
-    t_pool_end = time.time()
-    print(f"🧩 CatBoost Pool built in {t_pool_end - t_pool_start:.4f} seconds.")
-
-    # Load model
-    t_model_start = time.time()
-    model = CatBoostClassifier()
-    model.load_model(model_path)
-    t_model_end = time.time()
-    print(f"📦 Model loaded in {t_model_end - t_model_start:.4f} seconds.")
-
-    # Predict
-    t_pred_start = time.time()
-    predictions = model.predict(pool).ravel()  # <-- flatten 2D array to 1D
-    df["predicted_label"] = predictions
-    t_pred_end = time.time()
-    print(f"⚡ Predictions made in {t_pred_end - t_pred_start:.4f} seconds.")
-
-    # Display predictions
-    print("\n📌 Predictions:")
-    print(df[["test_score", "skill_match_ratio", "relevant_experience", "project_match",
-              "preferred_domain", "predicted_label"]].head(10))  # show top 10 for brevity
-
-    # Save predictions
-    t_save_start = time.time()
-    df.to_csv(output_csv, index=False)
-    t_save_end = time.time()
-    print(f"💾 Predictions saved to {output_csv} in {t_save_end - t_save_start:.4f} seconds.")
-
-    end_time = time.time()
-    print(f"✅ Total prediction process finished in {end_time - start_time:.2f} seconds.")
-
-    return df
-
-# -------------------------------
-# Example usage
-# -------------------------------
-if __name__ == "__main__":
-    BASE_DIR = Path(__file__).parent.resolve()  # directory of the current script
-    OUTPUT_DIR = BASE_DIR / "output"
-    OUTPUT_DIR.mkdir(exist_ok=True)  # create output folder if it doesn't exist
-
-    dataset_path = BASE_DIR / "candidates_prediction.json"
-    domain_path = BASE_DIR / "domain_requirements.json"
-    output_csv = OUTPUT_DIR / "candidates_pred.csv"
-    output_parquet = OUTPUT_DIR / "candidates_pred.parquet"
-
+    # ---------------------------
+    # Step 1: Update Dataset
+    # ---------------------------
     print("🔹 Updating dataset...")
     t_update_start = time.time()
     update_dataset(
@@ -94,16 +38,69 @@ if __name__ == "__main__":
     t_update_end = time.time()
     print(f"⏱ Dataset update completed in {t_update_end - t_update_start:.2f} seconds.\n")
 
-    input_csv = output_csv  # your CSV with new data
-    model_path = BASE_DIR / "catboost_resume_model_updated.cbm"
-    final_output_csv = OUTPUT_DIR / "final_output.csv"
-
+    # ---------------------------
+    # Step 2: Run Predictions
+    # ---------------------------
     print("🔹 Running predictions...")
-    predict_candidates(
-        model_path=str(model_path),
-        input_csv=str(input_csv),
-        output_csv=str(final_output_csv)
-    )
+    start_time = time.time()
+
+    # Load new data
+    df = pd.read_csv(output_csv)
+    print(f"📂 Loaded input CSV ({len(df)} samples)")
+
+    # Feature groups
+    num_cols  = ["test_score", "skill_match_ratio", "relevant_experience", "project_match"]
+    cat_cols  = ["preferred_domain"]
+    text_cols = ["skills_text", "projects_text", "titles_text"]
+    feature_cols = num_cols + cat_cols + text_cols
+
+    X = df[feature_cols].copy()
+
+    # Clean features
+    for col in text_cols:
+        X[col] = X[col].fillna("").astype(str)
+    for col in cat_cols:
+        X[col] = X[col].fillna("unknown").astype(str)
+
+    # Build CatBoost Pool
+    cat_idx  = [feature_cols.index(c) for c in cat_cols]
+    text_idx = [feature_cols.index(c) for c in text_cols]
+    pool = Pool(X, cat_features=cat_idx, text_features=text_idx)
+
+    # Load model
+    model = CatBoostClassifier()
+    model.load_model(str(model_path))
+
+    # Predict
+    df["predicted_label"] = model.predict(pool).ravel()
+
+    # Show top 10 predictions
+    print("\n📌 Predictions:")
+    print(df[["test_score", "skill_match_ratio", "relevant_experience", "project_match",
+              "preferred_domain", "predicted_label"]].head(10))
+
+    # Save predictions
+    df.to_csv(final_output_csv, index=False)
+    df.to_parquet(final_output_csv.with_suffix(".parquet"), index=False)
+
+    end_time = time.time()
+    print(f"✅ Total prediction process finished in {end_time - start_time:.2f} seconds.\n")
+
+    return df
+
+
+# ---------------------------
+# Example usage from any file
+# ---------------------------
+if __name__ == "__main__":
+    BASE_DIR = Path(__file__).parent.resolve()
+    dataset_path = BASE_DIR / "candidates_prediction.json"
+    domain_path = BASE_DIR / "domain_requirements.json"
+    model_path = BASE_DIR / "catboost_resume_model_updated.cbm"
+    output_dir = BASE_DIR / "output"
+
+    update_and_predict(dataset_path, domain_path, model_path, output_dir)
+
 
 
 

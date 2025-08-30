@@ -1,7 +1,7 @@
 test_score,skill_match_ratio,relevant_experience,project_match,preferred_domain,skills_text,projects_text,titles_text,label
-82,0.125,0,1,product management,product roadmap stakeholder management agile methodology presentation skills business strategy,roadmap planning project stakeholder alignment project,product coordinator,
-80,0.38461538461538464,2,1,data science,statistics sql critical thinking data visualization python machine learning,classification model project data dashboard project,data analyst,
-87,0.21428571428571427,1,1,web development,vue.js html javascript responsive design css debugging,portfolio website ui improvement project,frontend engineer,
-58,0.3,0,1,digital marketing,campaign management content writing email marketing copywriting seo analytics,product launch campaign,marketing intern,
-62,0.1,0,1,robotics,electronics c programming robotics design sensor integration embedded systems,robot arm project,robotics intern,
-65,0.1111111111111111,1,1,technical writing,technical editing manual writing proofreading documentation ms word,api documentation project,technical writer,
+78,0.0,0,0,software development,microservices spring boot unit testing java rest api,e-commerce backend inventory management system,backend developer,
+85,0.0,0,0,design,ui/ux design photoshop wireframing figma illustrator,mobile app redesign website ui overhaul,ui designer,
+90,0.15384615384615385,3,1,data science,sql data cleaning visualization statistical modeling r,sales prediction model customer churn analysis,data scientist,
+70,0.2,0,1,robotics,hardware debugging embedded systems c++ iot rtos,smart home controller sensor network project,embedded engineer,
+60,0.3,0,1,digital marketing,blog writing analytics seo content strategy social media,product launch campaign content marketing plan,content writer,
+82,0.0,0,0,software development,python docker flask testing api development,microservice api project internal tool development,software engineer,
