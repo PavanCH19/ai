@@ -1,0 +1,675 @@
+{
+    "Data Science": {
+        "skills": [
+            "python",
+            "pandas",
+            "sql",
+            "machine learning",
+            "statistics",
+            "numpy",
+            "scikit-learn",
+            "data visualization",
+            "r",
+            "matplotlib",
+            "deep learning",
+            "etl",
+            "feature engineering"
+        ],
+        "project_keywords": [
+            "data",
+            "model",
+            "pipeline",
+            "analysis",
+            "prediction",
+            "regression",
+            "classification",
+            "clustering",
+            "analytics",
+            "dashboard",
+            "report"
+        ],
+        "min_score": 70,
+        "job_titles": [
+            "Data Analyst",
+            "ML Engineer",
+            "Data Scientist",
+            "Business Intelligence Analyst",
+            "AI Researcher",
+            "Data Engineer",
+            "Analytics Consultant"
+        ]
+    },
+    "Web Development": {
+        "skills": [
+            "html",
+            "css",
+            "javascript",
+            "react",
+            "nodejs",
+            "angular",
+            "vue",
+            "typescript",
+            "express",
+            "nextjs",
+            "bootstrap",
+            "redux",
+            "sass",
+            "graphql"
+        ],
+        "project_keywords": [
+            "website",
+            "frontend",
+            "ui",
+            "form",
+            "responsive",
+            "api",
+            "dashboard",
+            "ecommerce",
+            "cms",
+            "login",
+            "portal"
+        ],
+        "min_score": 65,
+        "job_titles": [
+            "Frontend Developer",
+            "Backend Developer",
+            "Fullstack Engineer",
+            "Web Developer",
+            "UI Developer",
+            "Javascript Developer",
+            "Frontend Engineer",
+            "Backend Engineer"
+        ]
+    },
+    "UI/UX Design": {
+        "skills": [
+            "figma",
+            "wireframe",
+            "prototype",
+            "design",
+            "ux",
+            "adobe xd",
+            "sketch",
+            "user research",
+            "interaction design",
+            "visual design",
+            "user testing",
+            "persona",
+            "journey mapping"
+        ],
+        "project_keywords": [
+            "interface",
+            "mockup",
+            "ux",
+            "research",
+            "user testing",
+            "journey map",
+            "persona",
+            "usability",
+            "prototype",
+            "a/b testing",
+            "design system"
+        ],
+        "min_score": 60,
+        "job_titles": [
+            "UX Designer",
+            "UI Designer",
+            "Product Designer",
+            "Interaction Designer",
+            "Visual Designer",
+            "Experience Designer",
+            "UI/UX Specialist"
+        ]
+    },
+    "Cybersecurity": {
+        "skills": [
+            "network security",
+            "firewall",
+            "cryptography",
+            "linux",
+            "ethical hacking",
+            "penetration testing",
+            "vulnerability assessment",
+            "security auditing",
+            "forensics",
+            "incident response",
+            "siem",
+            "risk management"
+        ],
+        "project_keywords": [
+            "intrusion",
+            "malware",
+            "encryption",
+            "pentest",
+            "firewall configuration",
+            "incident response",
+            "security monitoring",
+            "threat analysis",
+            "vulnerability scan",
+            "cyber attack"
+        ],
+        "min_score": 68,
+        "job_titles": [
+            "Security Analyst",
+            "Penetration Tester",
+            "SOC Analyst",
+            "Cybersecurity Engineer",
+            "Information Security Specialist",
+            "Ethical Hacker",
+            "Security Consultant"
+        ]
+    },
+    "Cloud Computing": {
+        "skills": [
+            "aws",
+            "azure",
+            "gcp",
+            "docker",
+            "kubernetes",
+            "terraform",
+            "serverless",
+            "ci/cd pipelines",
+            "monitoring",
+            "cloud security",
+            "scaling",
+            "load balancing"
+        ],
+        "project_keywords": [
+            "cloud",
+            "deployment",
+            "scaling",
+            "infrastructure",
+            "load balancing",
+            "containers",
+            "orchestration",
+            "automation",
+            "virtual machines",
+            "serverless",
+            "microservices"
+        ],
+        "min_score": 67,
+        "job_titles": [
+            "Cloud Engineer",
+            "DevOps Engineer",
+            "Site Reliability Engineer",
+            "Cloud Architect",
+            "Infrastructure Engineer",
+            "Cloud Consultant",
+            "Cloud Administrator"
+        ]
+    },
+    "Artificial Intelligence": {
+        "skills": [
+            "deep learning",
+            "tensorflow",
+            "pytorch",
+            "nlp",
+            "computer vision",
+            "reinforcement learning",
+            "scikit-learn",
+            "keras",
+            "gan",
+            "ml pipelines",
+            "cv",
+            "rnn",
+            "cnn"
+        ],
+        "project_keywords": [
+            "neural network",
+            "classification",
+            "nlp",
+            "vision",
+            "image recognition",
+            "text processing",
+            "prediction",
+            "chatbot",
+            "object detection",
+            "recommendation",
+            "segmentation"
+        ],
+        "min_score": 75,
+        "job_titles": [
+            "AI Engineer",
+            "Research Scientist",
+            "Deep Learning Engineer",
+            "ML Engineer",
+            "Computer Vision Engineer",
+            "NLP Engineer",
+            "AI Consultant"
+        ]
+    },
+    "Mobile App Development": {
+        "skills": [
+            "android",
+            "kotlin",
+            "swift",
+            "flutter",
+            "react native",
+            "ui/ux mobile",
+            "xamarin",
+            "objective-c",
+            "mobile testing",
+            "firebase",
+            "push notification",
+            "app store"
+        ],
+        "project_keywords": [
+            "app",
+            "mobile",
+            "ios",
+            "android",
+            "firebase",
+            "push notification",
+            "ui testing",
+            "app store",
+            "login",
+            "payment",
+            "mobile game",
+            "analytics"
+        ],
+        "min_score": 65,
+        "job_titles": [
+            "Android Developer",
+            "iOS Developer",
+            "Mobile App Engineer",
+            "Flutter Developer",
+            "React Native Developer",
+            "Mobile Software Engineer"
+        ]
+    },
+    "DevOps": {
+        "skills": [
+            "ci/cd",
+            "jenkins",
+            "docker",
+            "kubernetes",
+            "terraform",
+            "ansible",
+            "monitoring",
+            "git",
+            "aws",
+            "azure",
+            "automation",
+            "scripting"
+        ],
+        "project_keywords": [
+            "automation",
+            "deployment",
+            "infrastructure",
+            "monitoring",
+            "pipelines",
+            "build",
+            "integration",
+            "release",
+            "scaling",
+            "cloud"
+        ],
+        "min_score": 70,
+        "job_titles": [
+            "DevOps Engineer",
+            "Build Engineer",
+            "Automation Specialist",
+            "Site Reliability Engineer",
+            "Infrastructure Engineer",
+            "Release Manager"
+        ]
+    },
+    "Database Administration": {
+        "skills": [
+            "mysql",
+            "postgresql",
+            "oracle",
+            "mongodb",
+            "query optimization",
+            "database design",
+            "backup",
+            "performance tuning",
+            "replication",
+            "nosql",
+            "sql server",
+            "data warehousing"
+        ],
+        "project_keywords": [
+            "database",
+            "query",
+            "backup",
+            "tuning",
+            "replication",
+            "optimization",
+            "etl",
+            "migration",
+            "schema design"
+        ],
+        "min_score": 65,
+        "job_titles": [
+            "Database Administrator",
+            "DB Engineer",
+            "SQL Developer",
+            "Database Engineer",
+            "DBA Specialist",
+            "Data Architect"
+        ]
+    },
+    "Networking": {
+        "skills": [
+            "routing",
+            "switching",
+            "tcp/ip",
+            "cisco",
+            "vpn",
+            "lan/wlan",
+            "firewall",
+            "network monitoring",
+            "dhcp",
+            "dns",
+            "packet analysis"
+        ],
+        "project_keywords": [
+            "network",
+            "protocol",
+            "firewall",
+            "router",
+            "switch",
+            "vpn",
+            "configuration",
+            "troubleshooting"
+        ],
+        "min_score": 60,
+        "job_titles": [
+            "Network Engineer",
+            "System Administrator",
+            "IT Support Specialist",
+            "Network Administrator",
+            "Network Consultant",
+            "Network Analyst"
+        ]
+    },
+    "Digital Marketing": {
+        "skills": [
+            "seo",
+            "sem",
+            "content marketing",
+            "social media",
+            "analytics",
+            "email marketing",
+            "ppc",
+            "ads",
+            "google analytics",
+            "marketing strategy"
+        ],
+        "project_keywords": [
+            "campaign",
+            "branding",
+            "traffic",
+            "conversion",
+            "leads",
+            "social media",
+            "content",
+            "ads"
+        ],
+        "min_score": 55,
+        "job_titles": [
+            "Digital Marketer",
+            "SEO Specialist",
+            "Content Strategist",
+            "Social Media Manager",
+            "Marketing Analyst",
+            "SEM Specialist"
+        ]
+    },
+    "Business Analysis": {
+        "skills": [
+            "requirements gathering",
+            "uml",
+            "process modeling",
+            "agile",
+            "scrum",
+            "business process",
+            "stakeholder management",
+            "documentation",
+            "data analysis"
+        ],
+        "project_keywords": [
+            "workflow",
+            "business",
+            "analysis",
+            "report",
+            "requirement",
+            "process",
+            "documentation",
+            "gap analysis"
+        ],
+        "min_score": 60,
+        "job_titles": [
+            "Business Analyst",
+            "Process Consultant",
+            "Requirements Engineer",
+            "Systems Analyst",
+            "Product Analyst",
+            "Business Process Analyst"
+        ]
+    },
+    "Game Development": {
+        "skills": [
+            "unity",
+            "c#",
+            "unreal engine",
+            "blender",
+            "game physics",
+            "game design",
+            "ai",
+            "graphics programming",
+            "shader programming"
+        ],
+        "project_keywords": [
+            "game",
+            "level",
+            "character",
+            "ai",
+            "npc",
+            "multiplayer",
+            "graphics",
+            "animation",
+            "game mechanics"
+        ],
+        "min_score": 65,
+        "job_titles": [
+            "Game Developer",
+            "Unity Developer",
+            "Gameplay Programmer",
+            "Game Designer",
+            "Graphics Programmer",
+            "Level Designer"
+        ]
+    },
+    "Robotics": {
+        "skills": [
+            "robotics",
+            "arduino",
+            "ros",
+            "c++",
+            "mechanical design",
+            "automation",
+            "sensors",
+            "control systems",
+            "embedded systems",
+            "robot programming"
+        ],
+        "project_keywords": [
+            "automation",
+            "sensors",
+            "actuators",
+            "control",
+            "robot",
+            "navigation",
+            "manipulation",
+            "simulation"
+        ],
+        "min_score": 70,
+        "job_titles": [
+            "Robotics Engineer",
+            "Automation Engineer",
+            "Control Systems Engineer",
+            "Embedded Systems Engineer",
+            "Robot Programmer",
+            "Mechatronics Engineer"
+        ]
+    },
+    "Blockchain": {
+        "skills": [
+            "solidity",
+            "ethereum",
+            "smart contracts",
+            "web3",
+            "cryptography",
+            "dapps",
+            "truffle",
+            "remix",
+            "defi",
+            "nfts"
+        ],
+        "project_keywords": [
+            "blockchain",
+            "decentralized",
+            "dapp",
+            "token",
+            "smart contract",
+            "ledger",
+            "crypto",
+            "transaction"
+        ],
+        "min_score": 72,
+        "job_titles": [
+            "Blockchain Developer",
+            "Smart Contract Developer",
+            "Web3 Engineer",
+            "Blockchain Engineer",
+            "Dapp Developer"
+        ]
+    },
+    "Augmented Reality / Virtual Reality": {
+        "skills": [
+            "unity",
+            "unreal engine",
+            "3d modeling",
+            "ar",
+            "vr",
+            "3d animation",
+            "c#",
+            "shader programming",
+            "interaction design"
+        ],
+        "project_keywords": [
+            "virtual",
+            "augmented",
+            "simulation",
+            "experience",
+            "ar",
+            "vr",
+            "interactive",
+            "3d environment"
+        ],
+        "min_score": 68,
+        "job_titles": [
+            "AR/VR Developer",
+            "XR Engineer",
+            "Immersive Experience Designer",
+            "AR Developer",
+            "VR Developer"
+        ]
+    },
+    "Quality Assurance": {
+        "skills": [
+            "selenium",
+            "test automation",
+            "manual testing",
+            "cypress",
+            "qa",
+            "bug tracking",
+            "test cases",
+            "jenkins",
+            "performance testing"
+        ],
+        "project_keywords": [
+            "testing",
+            "bugs",
+            "automation",
+            "validation",
+            "test scripts",
+            "integration",
+            "regression",
+            "unit test"
+        ],
+        "min_score": 60,
+        "job_titles": [
+            "QA Engineer",
+            "Test Automation Engineer",
+            "Software Tester",
+            "QA Analyst",
+            "Quality Analyst",
+            "SDET"
+        ]
+    },
+    "Technical Writing": {
+        "skills": [
+            "documentation",
+            "manuals",
+            "writing",
+            "research",
+            "editing",
+            "content creation",
+            "technical manuals",
+            "reports",
+            "guidelines"
+        ],
+        "project_keywords": [
+            "documentation",
+            "guides",
+            "manuals",
+            "instructions",
+            "user manuals",
+            "technical docs",
+            "process docs"
+        ],
+        "min_score": 55,
+        "job_titles": [
+            "Technical Writer",
+            "Content Writer",
+            "Documentation Specialist",
+            "Instructional Designer",
+            "Technical Author"
+        ]
+    },
+    "Product Management": {
+        "skills": [
+            "roadmap",
+            "agile",
+            "scrum",
+            "stakeholder management",
+            "analytics",
+            "requirements gathering",
+            "prioritization",
+            "market research"
+        ],
+        "project_keywords": [
+            "product",
+            "feature",
+            "release",
+            "market",
+            "strategy",
+            "launch",
+            "feedback",
+            "roadmap",
+            "planning"
+        ],
+        "min_score": 65,
+        "job_titles": [
+            "Product Manager",
+            "Project Manager",
+            "Product Owner",
+            "Associate Product Manager",
+            "Program Manager",
+            "Product Strategist"
+        ]
+    }
+}

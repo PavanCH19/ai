@@ -1,7 +1,5 @@
 test_score,skill_match_ratio,relevant_experience,project_match,preferred_domain,skills_text,projects_text,titles_text,label,predicted_label
-78,0.0,0,0,software development,microservices spring boot unit testing java rest api,e-commerce backend inventory management system,backend developer,,suggest
-85,0.0,0,0,design,ui/ux design photoshop wireframing figma illustrator,mobile app redesign website ui overhaul,ui designer,,suggest
-90,0.1538461538461538,3,1,data science,sql data cleaning visualization statistical modeling r,sales prediction model customer churn analysis,data scientist,,fit
-70,0.2,0,1,robotics,hardware debugging embedded systems c++ iot rtos,smart home controller sensor network project,embedded engineer,,no_fit
-60,0.3,0,1,digital marketing,blog writing analytics seo content strategy social media,product launch campaign content marketing plan,content writer,,no_fit
-82,0.0,0,0,software development,python docker flask testing api development,microservice api project internal tool development,software engineer,,suggest
+80,0.0,0,0,web development,responsive design bootstrap fastapi git axios python css3 dsa node.js rest api javascript vite mysql github express.js postman agile/scrum html5 react.js jsx c jwt system design basics,blood donation management system mycloudnotebook app smart interview preparation app,,,no_fit
+90,0.0,0,0,software development,responsive design bootstrap git axios python css3 dsa node.js rest api javascript vite mysql github express.js postman agile/scrum html5 react.js jsx c jwt system design basics,blood donation management system smart interview preparation app hospital management system,,,suggest
+85,0.0,0,0,cloud computing,responsive design bootstrap git axios python css3 aws dsa node.js rest api vite mysql github express.js postman agile/scrum html5 react.js jsx c java jwt system design basics,blood donation management system smart interview preparation app,backend developer,,suggest
+88,0.0,0,1,data science,machine learning jupyter notebook numpy git eda python deep learning statistics matplotlib tensorflow sql data visualization github pytorch keras seaborn pandas r scikit-learn docker,customer churn prediction sales forecasting model image classification with cnn,data science intern,,suggest
